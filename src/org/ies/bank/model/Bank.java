@@ -20,7 +20,7 @@ public class Bank {
             account.showInfo();
         }
     }
-    // Este método lo hemos creado para ver si con un IAN existe una cuenta o no ( no lo piden
+    // Este método lo hemos creado para ver si con un IBAN existe una cuenta o no ( no lo piden
     // en el ejercicio pero viene bien para ayudar a relaizr otros métodos, como por ejemplo el último)
 
     public Account findAccount(String iban){
@@ -55,15 +55,40 @@ public class Bank {
     // Dado un IBAN y una cantidad de dinero, ingresar esa cantidad en la cuenta con ese IBAN.
     // Si no se encuentra la cuenta con ese IBAN muestra el mensaje "No se encuentra la cuenta"
     // en este utilizamos el métood creado por cuenta propia de "findAccount"
+    // en este métedo hemos utilizado dos creados anteriormente
 
-    public void setBalance(String iban, double balance ){
-        for(Account account : accounts){
-            if(account.getIban().equals(iban)){
-                account.setBalance(account.getBalance() + balance);
-            }
+    public void deposit(String iban, double amount){
+        Account account = findAccount(iban);
+        if (account != null){
+            account.deposit(amount);
+        }else{
+            System.out.println("Cuenta no encontrada");
         }
     }
 
+    // Dado un NIF, devuelve el número de cuentas de ese cliente
+
+    public int totalAccount(String nif){
+        int cont = 0;
+        for(Account account : accounts){
+            if (account.getCustomer().getNif().equals(nif)){
+                cont++;
+            }
+        }
+        return cont;
+    }
+
+
+    //Dado un IBAN, devuelve los datos del cliente al que pertenece la cuenta. Si no existe la cuenta devuelve null.
+
+    public Customer findAccountCustomer(String iban){
+        Account account = findAccount(iban);
+        if (account != null){
+            return account.getCustomer();
+        }else {
+            return null;
+        }
+    }
 
     public String getName() {
         return name;
