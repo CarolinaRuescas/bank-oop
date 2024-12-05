@@ -31,7 +31,13 @@ public class BankApp {
 
             if (option == 1){
                 bank.showAccount();
+            }else if (option ==2){
+                System.out.println("Intorduce el IBAN de la cuenta:");
+                bank.findAccount();
+
+
             }
+
 
 
         }
