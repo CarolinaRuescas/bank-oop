@@ -14,9 +14,15 @@ Métodos:
 - Mostrar todas las cuentas del banco (IBAN, saldo y NIF del cliente)
 - Dado un IBAN, mostrar la información de la cuenta con ese IBAN.
 - Dado un NIF, mostrar todas las cuentas del cliente con ese NIF 
-- Dado un IBAN y una cantidad de dinero, ingresar esa cantidad en la cuenta con ese IBAN. Si no se encuentra la cuenta con ese IBAN muestra el mensaje "No se encuentra la cuenta"
+- Dado un IBAN y una cantidad de dinero, ingresar esa cantidad en la cuenta 
+  con ese IBAN. Si no se encuentra la cuenta con ese IBAN muestra el mensaje 
+  "No se encuentra la cuenta"
 - Dado un NIF, devuelve el número de cuentas de ese cliente
 - Dado un IBAN, devuelve los datos del cliente al que pertenece la cuenta. Si no existe la cuenta devuelve null. 
+- Dados dos IBAN y una cantidad de dinero, realiza una transferencia desde la 
+  cuenta con el primer IBAN a la cuenta con el segundo IBAN. Si una de las cuentas 
+  no existo o no hay suficiente saldo en la cuenta de origen no se realiza la 
+  trasnferencia y se muestra un error explicando el problema
 ### Account
 
 Campos:
@@ -64,4 +70,19 @@ Tendrá un método run() que realice los siguiente:
         - Si no existe se muestra el mensaje "No existe la cuenta"
         - Si hay suficiente saldo, se reduce el saldo. Si no hay suficiente saldo se muestra "Saldo insuficiente"
         - Se muestra la cuenta
+  6. COntar cuentas de cliente
+  7. Mostrar cliente de cuenta
+  8. Realizar tranferencia
 
+### BankApp2
+Tendrá un método run() que realice lo siguiente:
+- Pide un banco usando Bankreader
+- Busca la cuenta con IBAN "ES0001"
+  -  Si no existe muestra "La cuenta no existe"
+  - Si existe, hace un deposito en la misma de 500
+- Busca otra cuenta con IBAN "ES0002"
+    - Si no existe muestra "La cuenta no existe"
+    - Si existe, saca 30 euros
+- Muestra en pantalla la información de la cuenta "ES0001"
+- Muestra en pantalla la información de la cuenta "ES0002"
+- Haz una trasnferencia de 500 euros desde "ES0001" a "ES0002"
