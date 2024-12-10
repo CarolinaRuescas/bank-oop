@@ -17,12 +17,17 @@ public class Bank {
     //  no existo o no hay suficiente saldo en la cuenta de origen no se realiza la
     //  trasnferencia y se muestra un error explicando el problema
 
-    public void transfer(String iban, double amount){
-        for (Account account : accounts){
-            findAccount(iban);
-        }
-        for (Account account:accounts){
-            account.deposit(amount);
+    public void transfer(String ibanOrigen, String ibanDestination, double amount){
+        Account account = findAccount(ibanOrigen);
+        Account account2 = findAccount(ibanDestination);
+
+        if (ibanOrigen != null && ibanDestination != null){
+            if (account.getBalance() >= amount){
+                account.deposit(-amount);
+                account2.deposit(amount);
+            }
+        }else{
+            System.out.println("no hay suficiente saldo");
         }
     }
 
