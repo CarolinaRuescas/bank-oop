@@ -3,14 +3,11 @@ package org.ies.bank.components;
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 
-import java.util.Scanner;
 
 public class BankApp2 {
-    private final Scanner scanner;
     private final BankReader bankReader;
 
-    public BankApp2(Scanner scanner, BankReader bankReader) {
-        this.scanner = scanner;
+    public BankApp2(BankReader bankReader) {
         this.bankReader = bankReader;
     }
 

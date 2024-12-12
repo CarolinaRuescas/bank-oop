@@ -31,6 +31,31 @@ public class Bank {
         }
     }
 
+    public void totalTransfer(String ibanOrigen, String ibanDestination){
+        Account account = findAccount(ibanOrigen);
+        Account account2 = findAccount(ibanDestination);
+        if (ibanOrigen != null && ibanDestination != null){
+
+
+        }
+    }
+
+    // método para sacar dinero
+
+    public void withdraw(String iban, double amount) {
+        var account = findAccount(iban);
+        if (account != null) {
+            if (account.getBalance() >= amount) {
+                account.deposit(-amount);
+            } else {
+                System.out.println("No hay suficiente saldo");
+            }
+        } else {
+            System.out.println("Cuenta no encontrada");
+        }
+    }
+
+
 
     public void showAccountCustomer(String iban){
         var account = findAccount(iban);
@@ -39,7 +64,6 @@ public class Bank {
         }else{
             account.getCustomer().showInfo();
         }
-
     }
 
     public int countCustomerAccount(String nif){

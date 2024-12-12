@@ -2,39 +2,49 @@ package org.ies.bank.components;
 
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
+import org.ies.bank.model.Customer;
 
-import java.util.Scanner;
 
 public class BankApp3 {
-    private final Scanner scanner;
+
     private final BankReader bankReader;
 
-    public BankApp3(Scanner scanner, BankReader bankReader) {
-        this.scanner = scanner;
+    public BankApp3(BankReader bankReader) {
+
         this.bankReader = bankReader;
     }
 
-    public void run(){
+    public void run() {
         Bank bank = bankReader.read();
 
         //Muestra todas la cuentas del banoc
         bank.showAccount();
 
         //Sca 50€ de la cuenta ES0003
-        Account account = bank.findAccount("ES0003")
-        if (account != null){
+        Account account = bank.findAccount("ES0003");
+        if (account != null) {
             account.deposit(-50);
-        }else{
+        } else {
             System.out.println(" Cuenta no encontrada");
         }
 
         //Muestra las cuentas del cliente con NIF 000X
         bank.totalAccount("000X");
 
+        //Mete 300 en la cuenta ES0004
+        Account account2 = bank.findAccount("ES0004");
+        if (account2 != null) {
+            account2.deposit(300);
+        } else {
+            System.out.println("Cuenta no encontrada");
+        }
 
-
-
-
+        //Muestra los datos del titular de la cuenta ES0001
+        Customer customer = bank.findAccountCustomer("ES0001");
+        if (customer != null) {
+            customer.showInfo();
+        } else {
+            System.out.println("Cuenta no encontrada");
+        }
     }
-
 }
