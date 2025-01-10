@@ -14,4 +14,7 @@ public class Main3 {
 
         bankApp3.run();
     }
+
+    public static class Main4 {
+    }
 }
