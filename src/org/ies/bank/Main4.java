@@ -1,9 +1,9 @@
 package org.ies.bank;
 
-import org.ies.bank.components.AccountReader;
+import org.ies.bank.components.readers.scanner.ScannerAccountReader;
 import org.ies.bank.components.BankApp4;
-import org.ies.bank.components.BankReader;
-import org.ies.bank.components.CustomerReader;
+import org.ies.bank.components.readers.scanner.ScannerBankReader;
+import org.ies.bank.components.readers.scanner.ScannerCustomerReader;
 
 import java.util.Scanner;
 
@@ -12,11 +12,11 @@ public class Main4 {
 
         Scanner scanner = new Scanner(System.in);
 
-        CustomerReader customerReader = new CustomerReader(scanner);
-        AccountReader accountReader = new AccountReader(scanner, customerReader);
-        BankReader bankReader = new BankReader(scanner, accountReader);
+        ScannerCustomerReader scannerCustomerReader = new ScannerCustomerReader(scanner);
+        ScannerAccountReader scannerAccountReader = new ScannerAccountReader(scanner, scannerCustomerReader);
+        ScannerBankReader scannerBankReader = new ScannerBankReader(scanner, scannerAccountReader);
 
-        BankApp4 bankApp4 = new BankApp4(bankReader);
+        BankApp4 bankApp4 = new BankApp4(scannerBankReader);
 
         bankApp4.run();
 

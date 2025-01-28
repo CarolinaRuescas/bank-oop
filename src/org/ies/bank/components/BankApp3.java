@@ -1,5 +1,6 @@
 package org.ies.bank.components;
 
+import org.ies.bank.components.readers.scanner.ScannerBankReader;
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 import org.ies.bank.model.Customer;
@@ -7,15 +8,15 @@ import org.ies.bank.model.Customer;
 
 public class BankApp3 {
 
-    private final BankReader bankReader;
+    private final ScannerBankReader scannerBankReader;
 
-    public BankApp3(BankReader bankReader) {
+    public BankApp3(ScannerBankReader scannerBankReader) {
 
-        this.bankReader = bankReader;
+        this.scannerBankReader = scannerBankReader;
     }
 
     public void run() {
-        Bank bank = bankReader.read();
+        Bank bank = scannerBankReader.read();
 
         //Muestra todas la cuentas del banoc
         bank.showAccount();

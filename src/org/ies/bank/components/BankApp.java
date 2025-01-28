@@ -1,5 +1,6 @@
 package org.ies.bank.components;
 
+import org.ies.bank.components.readers.scanner.ScannerBankReader;
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 
@@ -7,18 +8,18 @@ import java.util.Scanner;
 
 public class BankApp {
     private final Scanner scanner;
-    private final BankReader bankReader;
+    private final ScannerBankReader scannerBankReader;
 
-    public BankApp(Scanner scanner, BankReader bankReader) {
+    public BankApp(Scanner scanner, ScannerBankReader scannerBankReader) {
         // se necesita el Scanner para hacer el  menu
         this.scanner = scanner;
         // se necesita el BankReader para pedir un banco al usuario
-        this.bankReader = bankReader;
+        this.scannerBankReader = scannerBankReader;
     }
 
     public void run() {
         // siempre empezamos pidiendo los datos con el reader
-        Bank bank = bankReader.read();
+        Bank bank = scannerBankReader.read();
         int option;
         do {
             option = chooseOption();

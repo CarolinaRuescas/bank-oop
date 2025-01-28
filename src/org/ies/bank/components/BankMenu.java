@@ -1,20 +1,21 @@
 package org.ies.bank.components;
 
+import org.ies.bank.components.readers.scanner.ScannerBankReader;
 import org.ies.bank.model.Bank;
 
 import java.util.Scanner;
 
 public class BankMenu {
     private final Scanner scanner;
-    private final BankReader bankReader;
+    private final ScannerBankReader scannerBankReader;
 
-    public BankMenu(Scanner scanner, BankReader bankReader) {
+    public BankMenu(Scanner scanner, ScannerBankReader scannerBankReader) {
         this.scanner = scanner;
-        this.bankReader = bankReader;
+        this.scannerBankReader = scannerBankReader;
     }
 
     public void run() {
-        Bank bank = bankReader.read();
+        Bank bank = scannerBankReader.read();
         int option;
         do {
             option = chooseOption();

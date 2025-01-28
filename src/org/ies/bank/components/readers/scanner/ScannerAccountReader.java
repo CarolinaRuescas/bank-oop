@@ -1,19 +1,21 @@
-package org.ies.bank.components;
+package org.ies.bank.components.readers.scanner;
 
+import org.ies.bank.components.readers.AccountReader;
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Customer;
 
 import java.util.Scanner;
 
-public class AccountReader {
+public class ScannerAccountReader implements AccountReader {
     private final Scanner scanner;
-    private final CustomerReader customerReader;
+    private final ScannerCustomerReader scannerCustomerReader;
 
-    public AccountReader(Scanner scanner, CustomerReader customerReader) {
+    public ScannerAccountReader(Scanner scanner, ScannerCustomerReader scannerCustomerReader) {
         this.scanner = scanner;
-        this.customerReader = customerReader;
+        this.scannerCustomerReader = scannerCustomerReader;
     }
 
+    @Override
     public Account read(){
         System.out.println("INTRODUCE LOS DATOS DE LA CUENTA");
         System.out.println("Introduce IBAN: ");
@@ -24,7 +26,7 @@ public class AccountReader {
         scanner.nextLine();
 
         System.out.println("Introduce el cliente: ");
-        Customer customer = customerReader.read();
+        Customer customer = scannerCustomerReader.read();
 
 
 

@@ -1,18 +1,19 @@
 package org.ies.bank.components;
 
+import org.ies.bank.components.readers.scanner.ScannerBankReader;
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 
 public class BankApp4 {
-    private final BankReader bankReader;
+    private final ScannerBankReader scannerBankReader;
 
 
-    public BankApp4(BankReader bankReader) {
-        this.bankReader = bankReader;
+    public BankApp4(ScannerBankReader scannerBankReader) {
+        this.scannerBankReader = scannerBankReader;
     }
 
     public void run(){
-        Bank bank = bankReader.read();
+        Bank bank = scannerBankReader.read();
 
         //Busca la cuenta con IBAN ES0001
         Account account = bank.findAccount("ES0001");
