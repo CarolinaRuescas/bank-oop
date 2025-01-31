@@ -1,11 +1,14 @@
 package org.ies.bank.components.readers.random;
 
+import org.ies.bank.components.readers.AccountReader;
 import org.ies.bank.components.readers.BankReader;
+import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 
 import java.util.Random;
 
 public class RandomBankReader implements BankReader {
+    private final AccountReader accountReader;
     private final String [] NAMES ={
             "Santander", "Caixa", "BBVA", "Bankia", "Sabadell", "Bank2" , "Bank3", "Bank4"
     };
@@ -15,7 +18,8 @@ public class RandomBankReader implements BankReader {
 
     private final Random random;
 
-    public RandomBankReader(Random random) {
+    public RandomBankReader(AccountReader accountReader, Random random) {
+        this.accountReader = accountReader;
         this.random = random;
     }
 
@@ -23,11 +27,15 @@ public class RandomBankReader implements BankReader {
     public Bank read(){
 
         String name = NAMES[random.nextInt(NAMES.length)];
-        String account = ACCOUNTS[random.nextInt(ACCOUNTS.length)];
+        int size = random.nextInt(20);
+        Account[] accounts = new Account[size];
+        for (int i = 0; i < size; i++) {
+            accounts[i] = accountReader.read();
+        }
 
         return new Bank(
                 name,
-                account
+                accounts
         );
 
     }
